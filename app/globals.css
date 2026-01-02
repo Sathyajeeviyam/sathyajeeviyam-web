@@ -1,11 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* ===============================
-   Global Reset
-================================ */
-
+/* ======================================================
+   LUXURY GLOBAL RESET
+====================================================== */
 *,
 *::before,
 *::after {
@@ -14,76 +9,208 @@
   padding: 0;
 }
 
-/* ===============================
-   HTML & Body
-================================ */
-
-html,
-body {
+html, body {
   width: 100%;
-  max-width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, #141414, #050505);
+  color: #f6e9c6;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-    "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: #ffffff;
-  color: #111111;
 }
 
-/* ===============================
-   Links
-================================ */
+/* ======================================================
+   GOLD VARIABLES (REAL LUXURY COLORS)
+====================================================== */
+:root {
+  --gold-main: #d4af37;
+  --gold-soft: #f6e9c6;
+  --gold-light: #fff2cc;
+  --gold-dark: #9e7c19;
+  --gold-glow: rgba(212, 175, 55, 0.45);
 
-a {
-  color: inherit;
-  text-decoration: none;
+  --black-main: #050505;
+  --black-soft: #0e0e0e;
 }
 
-/* ===============================
-   Images
-================================ */
-
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-/* ===============================
-   Buttons & Inputs
-================================ */
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-  outline: none;
-  border: none;
-  background: none;
-}
-
-/* ===============================
-   Lists
-================================ */
-
-ul,
-ol {
-  list-style: none;
-}
-
-/* ===============================
-   Tailwind Helpers
-================================ */
-
+/* ======================================================
+   CONTAINER
+====================================================== */
 .container {
-  width: 100%;
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1.5rem;
+}
+
+/* ======================================================
+   ULTRA LUXURY BUTTON – MAIN
+====================================================== */
+.btn-luxury {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.95rem 2.4rem;
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--gold-light),
+      var(--gold-main),
+      var(--gold-dark)
+    );
+
+  color: #000;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  border: none;
+  cursor: pointer;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow:
+    inset 0 1px 1px rgba(255,255,255,0.4),
+    0 10px 35px rgba(212,175,55,0.35);
+}
+
+/* Gold Glow Ring */
+.btn-luxury::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    var(--gold-main),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* Shine Sweep */
+.btn-luxury::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      120deg,
+      transparent 20%,
+      rgba(255,255,255,0.6) 50%,
+      transparent 80%
+    );
+  transform: translateX(-120%);
+  transition: transform 0.8s ease;
+}
+
+/* Hover */
+.btn-luxury:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow:
+    0 0 40px var(--gold-glow),
+    0 15px 50px rgba(212,175,55,0.45);
+}
+
+.btn-luxury:hover::before {
+  opacity: 1;
+}
+
+.btn-luxury:hover::after {
+  transform: translateX(120%);
+}
+
+/* Click */
+.btn-luxury:active {
+  transform: scale(0.97);
+}
+
+/* ======================================================
+   OUTLINE LUXURY BUTTON
+====================================================== */
+.btn-outline-luxury {
+  background: transparent;
+  color: var(--gold-soft);
+  border: 1px solid rgba(212,175,55,0.6);
+  padding: 0.9rem 2.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.35s ease;
+}
+
+.btn-outline-luxury:hover {
+  background: rgba(212,175,55,0.1);
+  box-shadow: 0 0 25px var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+/* ======================================================
+   FLOATING PREMIUM ACTION BUTTON
+====================================================== */
+.btn-floating-luxury {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at top,
+    var(--gold-light),
+    var(--gold-main)
+  );
+
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 0 30px var(--gold-glow),
+    0 10px 40px rgba(0,0,0,0.6);
+
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.btn-floating-luxury:hover {
+  transform: scale(1.12) rotate(8deg);
+}
+
+/* ======================================================
+   HERO (OPTIONAL – MATCHES BUTTON STYLE)
+====================================================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(circle at top, rgba(212,175,55,0.18), transparent 60%),
+    var(--black-main);
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  margin-bottom: 1rem;
+}
+
+.hero span {
+  color: var(--gold-main);
+}
+
+.hero p {
+  max-width: 620px;
+  opacity: 0.85;
+  margin-bottom: 2rem;
 }
